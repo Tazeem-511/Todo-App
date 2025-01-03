@@ -1,0 +1,244 @@
+:root {
+  --form-bg: #f8f4e5;
+  --form-shadow: #ffa580;
+  --form-primary-highlight: #95a4ff;
+  --form-secondary-highlight: #ffc8ff;
+  --font-size: 14pt;
+  --font-face: "Fjalla One";
+  --font-color: #2a293e;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden; /* Prevent horizontal overflow globally */
+}
+
+.products-container {
+  background: var(--form-bg);
+  width: 100vw;
+  min-height: 100vh;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  padding-right: 2rem;
+  /* background-color: red; */
+  /* overflow: hidden; */
+}
+
+.products-title {
+  font-size: 4rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--form-shadow);
+}
+
+.navigation-links {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-link {
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--form-shadow);
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.nav-link:hover {
+  color: var(--form-primary-highlight);
+}
+
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Default: 3 cards per row */
+  gap: 20px;
+  justify-content: center; /* Center align the cards */
+}
+
+@media (max-width: 1024px) {
+  .product-list {
+    grid-template-columns: repeat(
+      2,
+      1fr
+    ); /* 2 cards per row for medium screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .product-list {
+    grid-template-columns: 1fr; /* 1 card per row for small screens */
+    justify-items: center; /* Center the single card */
+  }
+}
+
+.product-card {
+  background: var(--form-bg);
+  min-width: 25vw;
+  border: 2px solid rgba(0, 0, 0, 1);
+  box-shadow: 15px 15px 1px var(--form-shadow),
+    15px 15px 1px 2px rgba(0, 0, 0, 1);
+  width: calc(33.333% - 20px);
+  padding: 1rem;
+  text-align: start;
+  position: relative;
+  margin-bottom: 5rem;
+  margin: 0.5rem;
+  /* overflow-x: hidden; */
+}
+
+.product-name {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--form-shadow);
+  margin-bottom: 2rem;
+}
+
+.product-card p {
+  font-size: var(--font-size);
+  color: var(--font-color);
+  margin-bottom: 1rem;
+}
+
+.main-container {
+  margin-bottom: 5rem;
+
+  width: 10rem;
+}
+
+.edit-link {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.pro-btn {
+  position: absolute;
+  left: 2%;
+  bottom: 4%;
+  margin: 0 auto;
+  line-height: calc(var(--font-size) * 2);
+  padding: 0 20px;
+  width: 6rem;
+  background: var(--form-shadow);
+  letter-spacing: 2px;
+  transition: 0.2s all ease-in-out;
+  outline: none;
+  border: 1px solid rgba(0, 0, 0, 1);
+  box-shadow: 3px 3px 1px 1px var(--form-primary-highlight),
+    3px 3px 1px 2px rgba(0, 0, 0, 1);
+}
+
+.pro-btn:hover {
+  background: rgba(0, 0, 0, 1);
+  color: white;
+  border: 1px solid rgba(0, 0, 0, 1);
+}
+
+::selection {
+  background: var(--form-secondary-highlight);
+}
+
+/* Search Bar Styling */
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.search-bar {
+  margin: 10px 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.search-bar input {
+  padding: 10px;
+  margin: 0 5px;
+  width: 250px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.3s;
+  max-width: 100%;
+}
+
+.search-bar input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Media Queries for Responsiveness */
+
+@media (max-width: 768px) {
+  .products-title {
+    font-size: 2rem;
+  }
+
+  .product-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .product-card {
+    width: 90%; /* Takes full width on smaller screens */
+    margin-bottom: 2rem;
+  }
+
+  .navigation-links {
+    position: static;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .nav-link {
+    font-size: 14px;
+    margin: 5px 0;
+  }
+
+  .search-bar input {
+    width: 90%; /* Make search input take more space on smaller screens */
+  }
+}
+
+/* Medium screens (e.g., tablets) */
+@media (max-width: 1024px) {
+  .products-title {
+    font-size: 2.5rem;
+  }
+
+  .product-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .product-card {
+    width: 45%; /* Adjust the width to 45% for better fit on tablets */
+    margin-bottom: 2rem;
+  }
+
+  .search-bar input {
+    width: 80%;
+  }
+}
+
+/* Large screens (e.g., desktops) */
+@media (min-width: 1200px) {
+  .product-card {
+    width: calc(33.333% - 20px); /* 3 cards per row on large screens */
+  }
+
+  .search-bar input {
+    width: 300px;
+  }
+}

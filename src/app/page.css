@@ -1,0 +1,62 @@
+:root {
+  --bg: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/38816/image-from-rawpixel-id-2210775-jpeg.jpg');
+  --form-bg: #f8f4e5;
+  --form-shadow: #ffa580;
+  --form-primary-highlight: #95a4ff;
+  --form-secondary-highlight: #ffc8ff;
+  --font-size: 14pt;
+  --font-face: 'Fjalla One';
+  --font-color: #2A293E;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.home-container {
+  background: var(--bg) center center no-repeat;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+}
+
+.welcome-content {
+  background: var(--form-bg);
+  padding: 50px 100px;
+  border: 2px solid rgba(0, 0, 0, 1);
+  box-shadow: 15px 15px 1px var(--form-shadow), 15px 15px 1px 2px rgba(0, 0, 0, 1);
+  text-align: center;
+}
+
+.welcome-content h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: var(--form-shadow);
+}
+
+.navigation-links {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.nav-link {
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--form-shadow);
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.nav-link:hover {
+  color: var(--form-primary-highlight);
+}
+
+::selection {
+  background: var(--form-secondary-highlight);
+}
