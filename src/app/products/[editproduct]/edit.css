@@ -31,8 +31,7 @@
   padding: 50px 100px;
   border: 2px solid rgba(0, 0, 0, 1);
   box-shadow: 15px 15px 1px var(--form-shadow), 15px 15px 1px 2px rgba(0, 0, 0, 1);
-  position: relative; /* To allow absolute positioning of the links */
-  margin-bottom: 5rem;
+  position: relative;
 }
 
 .home-link, .product-link {
@@ -88,8 +87,6 @@ input:focus {
 .edit-btn {
   display: block;
   margin: 0 auto;
-  width: 20rem;
-  height: 4rem;
   line-height: calc(var(--font-size) * 2);
   padding: 0 20px;
   background: var(--form-shadow);
@@ -117,4 +114,48 @@ input:-webkit-autofill:focus {
   -webkit-text-fill-color: var(--font-color);
   -webkit-box-shadow: 0 0 0px 1000px var(--form-bg) inset;
   transition: background-color 5000s ease-in-out 0s;
+}
+
+@media (max-width: 450px) {
+  .edit-body {
+    align-items: start;
+    padding: 10px;
+  }
+
+  .contact-us {
+    width: 90%;
+    padding: 20px;
+    box-shadow: 10px 10px 1px var(--form-shadow), 10px 10px 1px 2px rgba(0, 0, 0, 1);
+    margin-top: 6rem;
+  }
+
+  .form-content h1 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+  }
+
+  input {
+    font-size: 12px;
+    min-width: 200px;
+    margin-bottom: 10px;
+  }
+
+  .edit-btn {
+    width: 100%;
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+
+  .home-link, .product-link {
+    font-size: 12px;
+    top: 5px; 
+  }
+
+  .home-link {
+    left: 5px;
+  }
+
+  .product-link {
+    left: 55px;
+  }
 }

@@ -1,4 +1,5 @@
 :root {
+  --bg: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/38816/image-from-rawpixel-id-2210775-jpeg.jpg');
   --form-bg: #f8f4e5;
   --form-shadow: #ffa580;
   --form-primary-highlight: #95a4ff;
@@ -15,7 +16,7 @@
 }
 
 .products-container {
-  background: var(--form-bg);
+  background: var(--bg);
   width: 100vw;
   min-height: 100vh;
   display: grid;
@@ -108,7 +109,7 @@
 .main-container {
   margin-bottom: 5rem;
 
-  width: 10rem;
+  width: 18rem;
 }
 
 .edit-link {
@@ -177,7 +178,81 @@
   outline: none;
 }
 
+
+
 /* Media Queries for Responsiveness */
+
+
+@media (max-width: 450px) {
+
+
+  .products-container {
+    background: var(--bg);
+    min-width: 100vw;
+    min-height: 100vh;
+    /* display: grid; */
+    /* align-items: center; */
+    /* justify-items: center; */
+    /* padding-right: 2rem; */
+    /* background-color: red; */
+    /* overflow: hidden; */
+  }
+
+  .search-container{
+    /* background-color: yellow; */
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .products-title {
+    font-size: 1rem;
+  }
+
+  .product-list {
+    flex-direction: column;
+    align-items: center;
+    /* background-color: green; */
+    width: 100vw;
+  }
+
+  .main-container{
+    /* background-color: red; */
+    width: 20rem;
+  }
+
+  .product-card {
+    width: 100%; /* Takes full width on smaller screens */
+    margin-bottom: 2rem;
+    /* background-color: red; */
+  }
+
+  .navigation-links {
+   
+    background-color: #ffffff;
+    display: block;
+    width: 100%;
+    height: 2rem;
+    /* gap: 2rem; */
+    margin-left: 1rem;
+
+
+  }
+
+  .nav-link {
+    font-size: 14px;
+    /* margin: 5px 0/; */
+    /* margin-right: -2rem; */
+  }
+
+  .search-bar input {
+    width: 200px;
+    font-size: .8rem;
+    /* background-color: green; */
+
+     /* Make search input take more space on smaller screens */
+  }
+}
 
 @media (max-width: 768px) {
   .products-title {
@@ -203,7 +278,9 @@
 
   .nav-link {
     font-size: 14px;
-    margin: 5px 0;
+    margin: 5px 19px;
+    /* background-color: red; */
+    /* margin-left: 5rem;  */
   }
 
   .search-bar input {
@@ -223,8 +300,10 @@
   }
 
   .product-card {
-    width: 45%; /* Adjust the width to 45% for better fit on tablets */
+    width: 80%; /* Adjust the width to 45% for better fit on tablets */
     margin-bottom: 2rem;
+    margin-top: 3rem;
+    margin-right: 3rem;
   }
 
   .search-bar input {

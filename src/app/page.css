@@ -60,3 +60,25 @@
 ::selection {
   background: var(--form-secondary-highlight);
 }
+@media (max-width: 450px) {
+  .home-container {
+    padding: 10px;
+  }
+
+  .welcome-content {
+    padding: 10px 20px;
+  }
+
+  .welcome-content h1 {
+    font-size: 1.2rem;
+  }
+
+  .navigation-links {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .nav-link {
+    font-size: 12px;
+  }
+}

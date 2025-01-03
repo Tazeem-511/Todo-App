@@ -5,13 +5,13 @@ export default function Home() {
   return (
     <div className="home-container">
       <div className="welcome-content">
-        <h1>Welcome to Our Store</h1>
+        <h1>Welcome Students </h1>
         <div className="navigation-links">
           <Link href="/addproduct" className="nav-link">
-            Go to Add Products
+            Go to Add Details
           </Link>
           <Link href="/products" className="nav-link">
-            Go to Products List
+            Go to Details List
           </Link>
         </div>
       </div>

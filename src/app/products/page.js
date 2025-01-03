@@ -73,8 +73,23 @@ const Products = () => {
   }
 
   return (
+    
+   <>
+    <div className="navigation-links">
+    <Link href="/" className="nav-link">
+      Home
+    </Link>
+    <Link href="/addproduct" className="nav-link add-link">
+      Add Product
+    </Link>
+  </div>
+
+
     <div className="products-container">
+      
       <h1 className="products-title">Products List</h1>
+
+      
 
       <div className="search-container">
         <div className="search-bar">
@@ -105,14 +120,7 @@ const Products = () => {
         </div>
       </div>
 
-      <div className="navigation-links">
-        <Link href="/" className="nav-link">
-          Home
-        </Link>
-        <Link href="/addproduct" className="nav-link">
-          Add Product
-        </Link>
-      </div>
+     
 
       <div className="product-list">
         {Array.isArray(filteredProducts) && filteredProducts.length > 0 ? (
@@ -124,11 +132,15 @@ const Products = () => {
                   <strong>Email:</strong> {product.email}
                 </p>
                 <p>
-                  <strong>Age:</strong> {product.age}
+                  <strong>Mobile Number:</strong> {product.age}
                 </p>
                 <p>
-                  <strong>Class:</strong> {product.standred}
+                  <strong>Address:</strong> {product.description}
                 </p>
+                <p>
+                  <strong>Role:</strong> {product.standred}
+                </p>
+               
               </main>
               <div className="edit-link pro-btn">
                 {product._id ? (
@@ -152,6 +164,7 @@ const Products = () => {
         )}
       </div>
     </div>
+   </>
   );
 };
 

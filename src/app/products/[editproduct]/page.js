@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { use } from "react"; // Import the React.use() hook for unwrapping the params promise
 import "./edit.css";
+import Link from "next/link";
 
 const EditProduct = ({ params }) => {
   const [name, setName] = useState(""); // Initialized as empty string
@@ -45,22 +46,34 @@ const EditProduct = ({ params }) => {
 
   // Function to handle form validation
   const validateForm = () => {
-    if (name.trim() !== name) {
-      setError("Name should not have spaces at the start or end.");
+    if (!/^[a-zA-Z0-9]+(?: [a-zA-Z0-9]+)*$/.test(name) || name.trim().length < 3) {
+      setError("Product Name must be alphanumeric and at least 3 characters long.");
       return false;
     }
 
-    if (/\s/.test(age)) {
-      setError("Age should not have spaces.");
+    if (
+      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+    ) {
+      setError("Please enter a valid email address.");
       return false;
     }
 
-    if (name === age) {
-      setError("Name and age cannot be the same.");
+    if (!/^\d{10}$/.test(age)) {
+      setError("Product Age must be exactly 10 digits.");
       return false;
     }
 
-    setError("");
+    if (description.trim().length < 10) {
+      setError("Product Description must be at least 10 characters long.");
+      return false;
+    }
+
+    if (!/^[a-zA-Z0-9]+(?: [a-zA-Z0-9]+)*$/.test(standred)) {
+      setError("Class must be alphanumeric and cannot be blank.");
+      return false;
+    }
+
+    setError(""); // Clear error if all validations pass
     return true;
   };
 
@@ -95,9 +108,15 @@ const EditProduct = ({ params }) => {
 
   return (
     <div className="edit-body">
+      <Link href="/" className="home-link">
+        Home
+      </Link>
+      <Link href="/products" className="product-link">
+        Details List
+      </Link>
       <div className="contact-us">
         <div className="form-content">
-          <h1>Edit Product</h1>
+          <h1>Edit Details</h1>
           <form onSubmit={updateProduct}>
             {error && <p className="error">{error}</p>}
 
@@ -119,21 +138,21 @@ const EditProduct = ({ params }) => {
               type="text"
               value={age}
               onChange={(e) => setAge(e.target.value)}
-              placeholder="Product Age"
+              placeholder="Number"
               required
             />
             <input
               type="text"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              placeholder="Product Description"
+              placeholder="Address"
               required
             />
             <input
               type="text"
               value={standred}
               onChange={(e) => setStandred(e.target.value)}
-              placeholder="Class"
+              placeholder="Role"
               required
             />
             <button className="edit-btn" type="submit">

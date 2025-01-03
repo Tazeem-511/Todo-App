@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useState } from "react";
 import Link from "next/link";
 import "./form.css";
@@ -9,82 +9,86 @@ const Page = () => {
   const [age, setAge] = useState("");
   const [description, setDescription] = useState("");
   const [standred, setStandred] = useState("");
-
-  const [error, setError] = useState(""); // Error state to show validation messages
+  const [error, setError] = useState("");
 
   // Form validation
- const validateForm = () => {
-   if (name.trim() !== name) {
-     setError("Name should not have spaces at the start or end.");
-     return false;
-   }
+  const validateForm = () => {
+    if (!/^[a-zA-Z0-9]+(?: [a-zA-Z0-9]+)*$/.test(name) || name.trim().length < 3) {
+      setError("Name must be alphanumeric and at least 3 characters long.");
+      return false;
+    }
 
-   if (isNaN(age) || age.trim() === "") {
-     setError("Age must be a valid number.");
-     return false;
-   }
+    if (
+      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+    ) {
+      setError("Please enter a valid email address.");
+      return false;
+    }
 
-   if (/\s/.test(age)) {
-     setError("Age should not have spaces.");
-     return false;
-   }
+    if (!/^\d{10}$/.test(age)) {
+      setError("Mobile Number must be exactly 10 digits.");
+      return false;
+    }
 
-   if (name === age) {
-     setError("Name and age cannot be the same.");
-     return false;
-   }
+    if (description.trim().length < 10) {
+      setError("Address must be at least 10 characters long.");
+      return false;
+    }
 
-   setError(""); // Clear error if all validations pass
-   return true;
- };
+    if (!/^[a-zA-Z0-9]+(?: [a-zA-Z0-9]+)*$/.test(standred)) {
+      setError("Role must be alphanumeric and cannot be blank.");
+      return false;
+    }
 
+    setError(""); // Clear error if all validations pass
+    return true;
+  };
 
- const addProduct = async (e) => {
-   e.preventDefault();
+  const addProduct = async (e) => {
+    e.preventDefault();
 
-   if (!validateForm()) return; // Stop if validation fails
+    if (!validateForm()) return; // Stop if validation fails
 
-   console.log("Submitted Data:", {
-     name,
-     email,
-     age,
-     description,
-     standred,
-   });
+    console.log("Submitted Data:", {
+      name,
+      email,
+      age,
+      description,
+      standred,
+    });
 
-   try {
-     const response = await fetch("/api/products", {
-       method: "POST",
-       headers: {
-         "Content-Type": "application/json",
-       },
-       body: JSON.stringify({
-         name,
-         email,
-         age: parseInt(age), // Ensure age is a number
-         description,
-         standred,
-       }),
-     });
+    try {
+      const response = await fetch("/api/products", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          age: parseInt(age), // Ensure age is a number
+          description,
+          standred,
+        }),
+      });
 
-     const result = await response.json();
-     console.log("Server Response:", result); // Debug API response
-     if (response.ok) {
-       alert("Product Added Successfully");
-       setName("");
-       setEmail("");
-       setAge("");
-       setDescription("");
-       setStandred("");
-     } else {
-       alert("Failed to add product: " + result.message);
-     }
-   } catch (error) {
-     console.error("Error adding product:", error);
-     alert("Something went wrong. Please try again.");
-   }
- };
-
+      const result = await response.json();
+      console.log("Server Response:", result); // Debug API response
+      if (response.ok) {
+        alert("Product Added Successfully");
+        setName("");
+        setEmail("");
+        setAge("");
+        setDescription("");
+        setStandred("");
+      } else {
+        alert("Failed to add product: " + result.message);
+      }
+    } catch (error) {
+      console.error("Error adding product:", error);
+      alert("Something went wrong. Please try again.");
+    }
+  };
 
   return (
     <div className="add-body">
@@ -92,11 +96,11 @@ const Page = () => {
         Home
       </Link>
       <Link href="/products" className="product-link">
-        Product
+        Details List
       </Link>
       <div className="contact-us">
         <div className="form-content">
-          <h1>Add Products</h1>
+          <h1>Add Details</h1>
           <form onSubmit={addProduct}>
             {error && <p className="error">{error}</p>}
 
@@ -118,24 +122,24 @@ const Page = () => {
               type="text"
               value={age}
               onChange={(e) => setAge(e.target.value)}
-              placeholder="Your Age"
+              placeholder="Mobile Number"
               required
             />
             <input
               type="text"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              placeholder="Your Description"
+              placeholder="Your Address"
               required
             />
             <input
               type="text"
               value={standred}
               onChange={(e) => setStandred(e.target.value)}
-              placeholder="Class"
+              placeholder="Role "
               required
             />
-          
+
             <button className="add-btn" type="submit">
               Add Details
             </button>
